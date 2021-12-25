@@ -1,12 +1,12 @@
 public class Division implements AriphmeticAction {
 
     public static LongNumber action(LongNumber num1, LongNumber num2) {
-        LongNumber res = new LongNumber("0");
+        LongNumber res = new LongNumber();
         LongNumber num = new LongNumber(num1);
 
-        while (num.number[0] > 0) {
+        while (num != null) {
             num = Subtraction.action(num, num2);
-            res = Sum.action(res, new LongNumber("1"));
+            res = Addition.action(res, new LongNumber("1"));
         }
 
         return res;

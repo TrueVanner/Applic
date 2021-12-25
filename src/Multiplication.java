@@ -4,7 +4,7 @@ public class Multiplication implements AriphmeticAction {
         LongNumber res = new LongNumber(num1);
 
         while (num2.number[0] != 0) {
-            res = Sum.action(res, num1);
+            res = Addition.action(res, num1);
             num2 = Subtraction.action(num2, new LongNumber("1"));
         }
 

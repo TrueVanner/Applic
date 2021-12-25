@@ -10,7 +10,7 @@ public class LongNumber {
     public LongNumber(String number) {
         this.number = new int[number.length()];
 
-        //РЕАЛИЗОВАТЬ ЗАПИСЬ В ДРУГУЮ СТОРОНУ
+        //TODO: РЕАЛИЗОВАТЬ ЗАПИСЬ В ДРУГУЮ СТОРОНУ!!
 
         for (int i = 0; i < number.length(); i++) {
             this.number[i] = Integer.parseInt(String.valueOf(number.charAt(i)));
@@ -20,13 +20,14 @@ public class LongNumber {
 
     public LongNumber(LongNumber num) {
         this.digit = num.digit;
+        this.number = new int[num.digit];
 
         for (int i = 0; i < num.digit; i++) {
             this.number[i] = num.number[i];
         }
     }
 
-    public String toString() {
+    public String intoString() {   //чтобы не было проблем с дефолтным toString
         String res = "";
         for (int i = 0; i < this.digit; i++) {
             if (i > 0)
@@ -38,6 +39,8 @@ public class LongNumber {
             }
         }
         return res;
+
+        // я потом переделаю кражу нулей
     }
 
     public void setDigit(int digits) {
