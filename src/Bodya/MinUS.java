@@ -1,8 +1,10 @@
-public class MinUS implements AriphmeticAction{
-    public static LongNumber action(LongNumber num1, LongNumber num2){
+package Bodya;
+
+public class MinUS implements AriphmeticAction {
+    public static LongNumber action(LongNumber num1, LongNumber num2) {
 
         // Digits of first number must ALWAYS be higher than second, otherwise error
-        if(num1.digit < num2.digit) {
+        if (num1.digit < num2.digit) {
             System.out.println("Digits of first number is smaller than second. Error!");
         }
 
