@@ -1,8 +1,4 @@
 public class Addition implements AriphmeticAction {
-    LongNumber num1;
-    LongNumber num2;
-
-    LongNumber res;
 
     public static LongNumber action(LongNumber num1, LongNumber num2) {
         LongNumber res = new LongNumber();
@@ -26,7 +22,6 @@ public class Addition implements AriphmeticAction {
             }
             x--;
             y--;
-
         }
         return res;
     }

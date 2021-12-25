@@ -3,14 +3,13 @@ public class LongNumber {
     public int digit;
 
     public LongNumber() {
-        this.number = new int[]{0};
+        this.number = new int[1];
+        this.number[0] = 0;
         this.digit = 1;
-    }   //на будущее
+    }
 
     public LongNumber(String number) {
         this.number = new int[number.length()];
-
-        //TODO: РЕАЛИЗОВАТЬ ЗАПИСЬ В ДРУГУЮ СТОРОНУ!!
 
         for (int i = 0; i < number.length(); i++) {
             this.number[i] = Integer.parseInt(String.valueOf(number.charAt(i)));
@@ -27,24 +26,61 @@ public class LongNumber {
         }
     }
 
-    public String intoString() {   //чтобы не было проблем с дефолтным toString
-        String res = "";
-        for (int i = 0; i < this.digit; i++) {
-            if (i > 0)
-                res += this.number[i];
-            else {
-                if (this.number[i] != 0) {
-                    res += this.number[i];
-                }
-            }
-        }
-        return res;
+    @Override
+    public String toString() {   //чтобы не было проблем с дефолтным toString
+        removeZeros();
+        StringBuilder res = new StringBuilder();
 
-        // я потом переделаю кражу нулей
+        for (int i = 0; i < this.digit; i++) {
+            res.append(this.number[i]);
+        }
+        return res.toString();
     }
 
-    public void setDigit(int digits) {
-        this.number = new int[digits];
+    private void removeZeros() {
+        int x;
+        for (x = 0; this.number[x] == 0; x++) ;
+        int[] buff = new int[digit - x];
+        System.arraycopy(number, x, buff, 0, digit - x);
+        System.arraycopy(buff, 0, number, 0, digit - x);
+    }
+
+    /**
+     * Выполняет сразу две новых работы:
+     * - позволяет изменять digit, при этом не очищая старый массив
+     * - заполняет пустые места -1, чтобы они были видны и их можно было легко удалять
+     * <p>
+     * <p>
+     * блять это не работает сука
+     */
+
+    public void setDigits(int digits) {
+        int[] new_number = new int[digits];
+        System.arraycopy(this.number, 0, new_number, 0, this.digit);
+
+        this.number = new_number;
         this.digit = digits;
+    }
+
+    /**
+     * Если больше указанного числа, возвращает 1
+     * Если меньше указанного числа, возвращает -1
+     * Если числа равны, возвращает 0
+     */
+    public int compareTo(LongNumber number) {
+        if (digit > number.digit) {
+            return 1;
+        } else if (number.digit > digit) {
+            return -1;
+        } else {
+            for (int i = 0; i < digit; i++) {
+                if (this.number[i] > number.number[i]) {
+                    return 1;
+                } else if (number.number[i] > this.number[i]) {
+                    return -1;
+                }
+            }
+            return 0;
+        }
     }
 }

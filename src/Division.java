@@ -3,16 +3,15 @@ public class Division implements AriphmeticAction {
     public static LongNumber action(LongNumber num1, LongNumber num2) {
         LongNumber res = new LongNumber();
         LongNumber num = new LongNumber(num1);
+        int[] buff = new int[num1.digit];
 
-        while (num != null) {
-            num = Subtraction.action(num, num2);
-            res = Addition.action(res, new LongNumber("1"));
-        }
+        int com = num1.compareTo(num2);
+
+        System.arraycopy(num.number, 0, buff, 0, 3);
 
         return res;
     }
 }
-
     /*
     div
 
@@ -26,4 +25,4 @@ public class Division implements AriphmeticAction {
     }
 
       return res;
-     */
+*/

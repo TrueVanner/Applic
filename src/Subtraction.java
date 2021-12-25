@@ -1,6 +1,5 @@
 public class Subtraction implements AriphmeticAction {
 
-
     //TODO: мне надо чтобы система выдавала null если первое число меньше второго
 
     public static LongNumber action(LongNumber num1, LongNumber num2) {
