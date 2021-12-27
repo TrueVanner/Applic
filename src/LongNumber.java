@@ -47,7 +47,7 @@ public class LongNumber {
 
     public void removeZeros() {
         int x;
-        for (x = 0; number[x] == 0; x++) ;
+        for (x = 0; x < digit && number[x] == 0 ; x++) ;
         int[] buff = new int[digit - x];
         System.arraycopy(number, x, buff, 0, digit - x);
         number = new int[digit - x];

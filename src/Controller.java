@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Controller {
     private ArrayList<AriphmeticAction> actions;
-    private Controller controller = new Controller();
+    private static Controller controller = new Controller();
 
     private Controller(){
         actions = new ArrayList<>();
@@ -29,7 +29,7 @@ public class Controller {
         return null;
     }
 
-    private Controller getInstance(){
+    public static Controller getInstance(){
         return controller;
     }
 }
