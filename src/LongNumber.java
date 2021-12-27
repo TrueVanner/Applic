@@ -29,20 +29,22 @@ public class LongNumber {
     @Override
     public String toString() {   //чтобы не было проблем с дефолтным toString
         removeZeros();
-        StringBuilder res = new StringBuilder();
+        StringBuilder res = new StringBuilder("");
 
-        for (int i = 0; i < this.digit; i++) {
-            res.append(this.number[i]);
+        for (int i = 0; i < digit; i++) {
+            res.append(number[i]);
         }
         return res.toString();
     }
 
     private void removeZeros() {
         int x;
-        for (x = 0; this.number[x] == 0; x++) ;
+        for (x = 0; number[x] == 0; x++) ;
         int[] buff = new int[digit - x];
         System.arraycopy(number, x, buff, 0, digit - x);
+        number = new int[digit - x];
         System.arraycopy(buff, 0, number, 0, digit - x);
+        digit = digit - x;
     }
 
     /**
@@ -55,10 +57,7 @@ public class LongNumber {
      */
 
     public void setDigits(int digits) {
-        int[] new_number = new int[digits];
-        System.arraycopy(this.number, 0, new_number, 0, this.digit);
-
-        this.number = new_number;
+        number = new int[digits];
         this.digit = digits;
     }
 
