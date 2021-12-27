@@ -2,8 +2,8 @@ public class Subtraction implements AriphmeticAction {
 
     //TODO: мне надо чтобы система выдавала null если первое число меньше второго
 
-    public static LongNumber action(LongNumber num1, LongNumber num2) {
-        LongNumber res = new LongNumber();
+    public LongNumber action(LongNumber num1, LongNumber num2) {
+        LongNumber res = new LongNumber("0");
         int maxDigits = Math.max(num1.digit, num2.digit);
         res.resetDigits(maxDigits);
 
@@ -22,6 +22,7 @@ public class Subtraction implements AriphmeticAction {
             buf1 = x >= 0 ? num1.number[x] * h : 0;
             buf2 = y >= 0 ? num2.number[y] * h : 0;
             res.number[i] = buf1 - buf2 + after;
+            after = 0;
             if (res.number[i] < 0) {
                 res.number[i] += 10;
                 after = -1;
