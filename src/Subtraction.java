@@ -10,15 +10,10 @@ public class Subtraction implements AriphmeticAction {
         int after = 0;
         int x = num1.digit - 1;
         int y = num2.digit - 1;
-        int h;
+        int h = num1.compareTo(num2);
 
-        if (num1.digit < num2.digit) {
-            h = -1;
-        } else {
-            h = 1;
-            if (num1.digit == num2.digit) {
-                h = num1.number[0] < num2.number[0] ? -1 : 1;
-            }
+        if(h == 0){
+            return new LongNumber("0");
         }
 
         int buf1, buf2;

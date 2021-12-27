@@ -28,6 +28,10 @@ public class LongNumber {
 
     @Override
     public String toString() {   //чтобы не было проблем с дефолтным toString
+        if(digit == 1 && number[0] == 0){
+            return "0";
+        }
+
         removeZeros();
         StringBuilder res = new StringBuilder("");
 
