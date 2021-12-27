@@ -1,6 +1,6 @@
 public class Addition implements AriphmeticAction {
 
-    public static LongNumber action(LongNumber num1, LongNumber num2) {
+    public LongNumber action(LongNumber num1, LongNumber num2) {
         LongNumber res = new LongNumber("0");
         int maxDigit = Math.max(num1.digit, num2.digit);
         res.resetDigits(maxDigit + 1);

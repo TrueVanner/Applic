@@ -1,10 +1,11 @@
 public class Multiplication implements AriphmeticAction {
 
-    public static LongNumber action(LongNumber num1, LongNumber num2) {
+    public LongNumber action(LongNumber num1, LongNumber num2) {
         LongNumber res = new LongNumber("0");
         res.resetDigits(num1.digit * num2.digit);
         int after = 0;
         LongNumber buff = new LongNumber("0");
+        Addition add = new Addition();
 
         for (int i = num2.digit - 1; i > -1; i--) {
             buff.resetDigits(num1.digit + 1);
@@ -17,7 +18,7 @@ public class Multiplication implements AriphmeticAction {
 
             buff.addDigits(num2.digit - 1 - i);
 
-            res = new LongNumber(Addition.action(res, buff));
+            res = new LongNumber(add.action(res, buff));
        }
 
         return res;

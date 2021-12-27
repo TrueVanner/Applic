@@ -11,7 +11,6 @@ public class Main {
         //System.out.println(Multiplication.action(num1, num2));      // 56088
         //System.out.println(Division.action(num1, num2));            // 3
 
-        System.out.println(Addition.action(new LongNumber("14346"), new LongNumber("4")));
 
     }
 
