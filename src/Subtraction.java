@@ -5,7 +5,7 @@ public class Subtraction implements AriphmeticAction {
     public static LongNumber action(LongNumber num1, LongNumber num2) {
         LongNumber res = new LongNumber();
         int maxDigits = Math.max(num1.digit, num2.digit);
-        res.setDigit(maxDigits);
+        res.resetDigits(maxDigits);
 
         int after = 0;
         int x = num1.digit - 1;
