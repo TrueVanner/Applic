@@ -3,9 +3,9 @@ public class LongNumber {
     public int digit;
 
     public LongNumber() {
-        this.number = new int[1];
-        this.number[0] = 0;
-        this.digit = 1;
+        number = new int[1];
+        number[0] = 0;
+        digit = 1;
     }
 
     public LongNumber(String number) {
@@ -21,19 +21,23 @@ public class LongNumber {
         this.digit = num.digit;
         this.number = new int[num.digit];
 
-        for (int i = 0; i < num.digit; i++) {
-            this.number[i] = num.number[i];
-        }
+        System.arraycopy(num.number, 0, this.number, 0, num.digit);
+    }
+
+    public LongNumber(int[] arr) {
+        digit = arr.length;
+        number = new int[digit];
+        System.arraycopy(number, 0, arr, 0, digit);
     }
 
     @Override
     public String toString() {   //чтобы не было проблем с дефолтным toString
-        if(digit == 1 && number[0] == 0){
+        if (digit == 1 && number[0] == 0) {
             return "0";
         }
 
         removeZeros();
-        StringBuilder res = new StringBuilder("");
+        StringBuilder res = new StringBuilder();
 
         for (int i = 0; i < digit; i++) {
             res.append(number[i]);
@@ -41,7 +45,7 @@ public class LongNumber {
         return res.toString();
     }
 
-    private void removeZeros() {
+    public void removeZeros() {
         int x;
         for (x = 0; number[x] == 0; x++) ;
         int[] buff = new int[digit - x];
@@ -50,15 +54,6 @@ public class LongNumber {
         System.arraycopy(buff, 0, number, 0, digit - x);
         digit = digit - x;
     }
-
-    /**
-     * Выполняет сразу две новых работы:
-     * - позволяет изменять digit, при этом не очищая старый массив
-     * - заполняет пустые места -1, чтобы они были видны и их можно было легко удалять
-     * <p>
-     * <p>
-     * блять это не работает сука
-     */
 
     public void resetDigits(int digits) {
         number = new int[digits];

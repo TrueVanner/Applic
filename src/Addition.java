@@ -1,8 +1,8 @@
 public class Addition implements AriphmeticAction {
 
-    public LongNumber action(LongNumber num1, LongNumber num2) {
+    public static LongNumber action(LongNumber num1, LongNumber num2) {
         LongNumber res = new LongNumber("0");
-        int maxDigit = num1.digit > num2.digit? num1.digit : num2.digit;
+        int maxDigit = Math.max(num1.digit, num2.digit);
         res.resetDigits(maxDigit + 1);
         int x = num1.digit - 1;
         int y = num2.digit - 1;
