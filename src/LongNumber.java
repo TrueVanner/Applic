@@ -56,9 +56,25 @@ public class LongNumber {
      * блять это не работает сука
      */
 
-    public void setDigits(int digits) {
+    public void resetDigits(int digits) {
         number = new int[digits];
-        this.digit = digits;
+        digit = digits;
+        for(int i = 0 ;i < digit; i++){
+            number[i] = 0;
+        }
+    }
+
+    public void addDigits(int digits){
+        if(digits > 0) {
+            int[] buff = new int[digit + digits];
+            System.arraycopy(number, 0, buff, 0, digit);
+            for (int i = digit; i < digit + digits; i++) {
+                buff[i] = 0;
+            }
+            number = new int[digit + digits];
+            digit += digits;
+            System.arraycopy(buff, 0, number, 0, digit);
+        }
     }
 
     /**
